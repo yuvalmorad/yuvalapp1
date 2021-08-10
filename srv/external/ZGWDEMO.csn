@@ -1,0 +1,967 @@
+{
+  "meta": {
+    "creator": "cds-dk 4.3.3"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZGWDEMO": {
+      "kind": "service"
+    },
+    "ZGWDEMO.Address": {
+      "kind": "type",
+      "elements": {
+        "Street": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "City": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "AddressTypeCode": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "PostalCode": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "CountryText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Building": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "AddressTypeText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "CountryCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "AddressKey": {
+          "type": "cds.String",
+          "length": 32
+        }
+      }
+    },
+    "ZGWDEMO.SalesOrderLineItemCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "SalesOrderItemKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "SalesOrderKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "CurrencyCodeDescription": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "OpportunityItemPosition": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProductName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "NetSum": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "TotalSum": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "SalesOrderItem": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Currency": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "ProductKey": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "ProductID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Availability": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "Tax": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "Note": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "Product": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.ProductCollection",
+          "on": [
+            {
+              "ref": [
+                "Product",
+                "ProductKey"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ProductKey"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZGWDEMO.SalesOrderCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "SalesOrderKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "SalesOrderID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "CreatedByEmployeeLastName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Status": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ChangedByEmployeeLastName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "ChangedByEmployeeUserID": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "NetSum": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "CustomerKey": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "CreatedByEmployeeUserID": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "DeliveryStatus": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CurrencyCodeDescription": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "StatusDescription": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "ChangedByCustomerName": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "CreatedByEmployeeFirstName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "DeliveryStatusDescription": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Note": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "CreatedAt": {
+          "type": "cds.DateTime"
+        },
+        "Tax": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "TotalSum": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "CreatedByCustomerName": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "ChangedByEmployeeFirstName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "ChangedAt": {
+          "type": "cds.DateTime"
+        },
+        "CustomerID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "CustomerName": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "BillingStatus": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BillingStatusDescription": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Currency": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "salesorderlineitems": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.SalesOrderLineItemCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "SalesOrderStatus": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.StatusCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "SalesOrderDeliveryStatus": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.DeliveryStatusCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "SalesOrderBillingStatus": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.BillingStatusCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "SalesOrderCurrency": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.CurrencyCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "BusinessPartner": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.BusinessPartnerCollection",
+          "on": [
+            {
+              "ref": [
+                "BusinessPartner",
+                "BusinessPartnerKey"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "CustomerKey"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZGWDEMO.StatusCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "StatusCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "StatusDescription": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.DeliveryStatusCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DeliveryStatusCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "DeliveryStatusDescription": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.BillingStatusCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "BillingStatusCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "BillingStatusDescription": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.CurrencyCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "CurrencyDescription": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.ContactPersonCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ContactKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "AddressTypeCode": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "AddressKey": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "FullName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Title": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BusinessPartnerKey": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "LanguageCode": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "CountryCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "NickName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Building": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PostalCode": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LastName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "City": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "GenderText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Initials": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "FirstName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "LanguageText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Street": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "EmailAddress": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "MiddleName": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "FaxNumber": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "AddressTypeText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "TelephoneNumber": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "GenderCode": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CountryText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "Country": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.CountryCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "AddressType": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.AddressTypeCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Gender": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.GenderCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZGWDEMO.BusinessPartnerCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "BusinessPartnerKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "Address": {
+          "type": "ZGWDEMO.Address"
+        },
+        "BusinessPartnerID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Company": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "BusinessPartnerRoleText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "CurrencyText": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "WebAddress": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "BusinessPartnerRoleCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "FaxNumber": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "LegalForm": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "EmailAddress": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "TelephoneNumber": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "CurrencyCode": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "CountryCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "GenderCode": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "RelatedContacts": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.ContactPersonCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "BusinessPartnerRole": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.BusinessPartnerRoleCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Gender": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.GenderCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Country": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.CountryCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Currency": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.CurrencyCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZGWDEMO.AddressTypeCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "AddressTypeCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "AddressTypeText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.BusinessPartnerRoleCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "BusinessPartnerRoleCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "BusinessPartnerRoleText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.GenderCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "GenderCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "GenderText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.CountryCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CountryCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "CountryText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.LanguageCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "LanguageCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "LanguageText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.ProductCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "ProductName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "ChangedAt": {
+          "type": "cds.DateTime"
+        },
+        "TaxTariffText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "ProductID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "DimensionUnit": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "WeightUnitText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "UnitPrice": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "WeightMeasure": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ProductWidth": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "DimensionUnitText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "SupplierID": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProductDescription": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "ProductCategory": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "TaxTariffCode": {
+          "type": "cds.Integer"
+        },
+        "QuantityUnit": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "ProductTypeCode": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "QuantityUnitText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "WeightUnitCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "SupplierName": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "CurrencyCode": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "ProductHeight": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "CurrencyText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "ProductDepth": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "SupplierGuid": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "ConversionFactors": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.ConversionFactorCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "TaxTariff": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.TariffCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "WeightUnits": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.WeightUnitCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "DimensionUnits": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.DimensionUnitCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "QuantityUnits": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.QuantityUnitCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "ProductTypes": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.ProductTypeCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "ProductCategories": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.ProductCategoryCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZGWDEMO.ConversionFactorCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "ConversionFactorKey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "SourceUnitCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "TargetUnitCode": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "SourceUnitText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "Numerator": {
+          "type": "cds.Integer"
+        },
+        "TargetUnitText": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "Denominator": {
+          "type": "cds.Integer"
+        },
+        "SourceUnits": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.SourceUnitCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "TargetUnits": {
+          "type": "cds.Association",
+          "target": "ZGWDEMO.TargetUnitCollection",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZGWDEMO.TariffCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "TaxTariffCode": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "TariffText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.WeightUnitCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "WeightUnitCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "WeightUnitText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.DimensionUnitCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DimensionUnitCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "DimensionUnitText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.QuantityUnitCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "QuantityUnitCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "QuantityUnitText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.SourceUnitCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "SourceUnitCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "SourceUnitText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.TargetUnitCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "TargetUnitCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "TargetUnitText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.ProductTypeCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductTypeCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "ProductTypeText": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "ZGWDEMO.ProductCategoryCollection": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductCategoryCode": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "ProductCategoryText": {
+          "type": "cds.LargeString"
+        }
+      }
+    }
+  }
+}

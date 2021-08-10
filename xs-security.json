@@ -1,0 +1,21 @@
+{
+  "xsappname": "yuvalapp1",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.yuvalapp1Manager",
+      "description": "yuvalapp1Manager"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "yuvalapp1Manager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.yuvalapp1Manager"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

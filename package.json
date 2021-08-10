@@ -1,0 +1,95 @@
+{
+  "name": "yuvalapp1",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^5",
+    "@sap/xsenv": "^3.1.1",
+    "@sap/xssec": "^3.2.2",
+    "express": "^4",
+    "hdb": "^0.18.3",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql",
+        "credentials": {
+          "database": "my.db"
+        }
+      },
+      "uaa": {
+        "kind": "xsuaa",
+        "credentials": {}
+      },
+      "Northwind_full_url": {
+        "kind": "odata",
+        "model": "srv/external/Northwind_full_url",
+        "credentials": {
+          "destination": "Northwind_full_url"
+        }
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "credentials": {
+          "destination": "API_BUSINESS_PARTNER"
+        }
+      },
+      "ZGWDEMO": {
+        "kind": "odata",
+        "model": "srv/external/ZGWDEMO",
+        "credentials": {
+          "destination": "ES5",
+          "path": "/sap/opu/odata/iwbep/GWDEMO"
+        }
+      },
+      "ZPAGE_BUILDER_CONF": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZPAGE_BUILDER_CONF",
+        "credentials": {
+          "destination": "ES5",
+          "path": "/sap/opu/odata/ui2/PAGE_BUILDER_CONF"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "lcap": true
+}

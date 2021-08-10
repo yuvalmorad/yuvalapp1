@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "creator": "cds-dk 4.3.3"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZPAGE_BUILDER_CONF": {
+      "kind": "service"
+    },
+    "ZPAGE_BUILDER_CONF.Catalogs": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "type": {
+          "type": "cds.LargeString"
+        },
+        "domainId": {
+          "type": "cds.LargeString"
+        },
+        "remoteType": {
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.LargeString"
+        },
+        "systemAlias": {
+          "type": "cds.LargeString"
+        },
+        "remoteId": {
+          "type": "cds.LargeString"
+        },
+        "isReadOnly": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "originalLanguage": {
+          "type": "cds.LargeString"
+        },
+        "scope": {
+          "type": "cds.LargeString"
+        },
+        "baseUrl": {
+          "type": "cds.LargeString"
+        },
+        "chipCount": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "outdated": {
+          "type": "cds.LargeString"
+        },
+        "CatalogPage": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Pages"
+        },
+        "Chips": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Chips",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.Pages": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.LargeString"
+        },
+        "catalogId": {
+          "type": "cds.LargeString"
+        },
+        "layout": {
+          "type": "cds.LargeString"
+        },
+        "originalLanguage": {
+          "type": "cds.LargeString"
+        },
+        "isCatalogPage": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "chipInstanceCount": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "isPersLocked": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "isReadOnly": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "scope": {
+          "type": "cds.LargeString"
+        },
+        "updated": {
+          "type": "cds.DateTime"
+        },
+        "outdated": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Catalog": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Catalogs"
+        },
+        "allCatalogs": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Catalogs",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "PageChipInstances": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.PageChipInstances",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Bags": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Bags",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.PageChipInstances": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pageId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "instanceId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "chipId": {
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.LargeString"
+        },
+        "configuration": {
+          "type": "cds.LargeString"
+        },
+        "layoutData": {
+          "type": "cds.LargeString"
+        },
+        "remoteCatalogId": {
+          "type": "cds.LargeString"
+        },
+        "referencePageId": {
+          "type": "cds.LargeString"
+        },
+        "referenceChipInstanceId": {
+          "type": "cds.LargeString"
+        },
+        "isReadOnly": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "scope": {
+          "type": "cds.LargeString"
+        },
+        "updated": {
+          "type": "cds.DateTime"
+        },
+        "outdated": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Chip": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Chips"
+        },
+        "ReferenceChip": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Chips"
+        },
+        "RemoteCatalog": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Catalogs"
+        },
+        "ReferenceChipInstance": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.PageChipInstances"
+        },
+        "ChipInstanceBags": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.ChipInstanceBags",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.Chips": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.LargeString"
+        },
+        "description": {
+          "type": "cds.LargeString"
+        },
+        "configuration": {
+          "type": "cds.LargeString"
+        },
+        "url": {
+          "type": "cds.LargeString"
+        },
+        "baseChipId": {
+          "type": "cds.LargeString"
+        },
+        "catalogId": {
+          "type": "cds.LargeString"
+        },
+        "catalogPageChipInstanceId": {
+          "type": "cds.LargeString"
+        },
+        "referenceChipId": {
+          "type": "cds.LargeString"
+        },
+        "isReadOnly": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Catalog": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Catalogs"
+        },
+        "ReferenceChip": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Chips"
+        },
+        "ChipBags": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.ChipBags",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "CatalogPageChipInstance": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.PageChipInstances"
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.Bags": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pageId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "scope": {
+          "type": "cds.LargeString"
+        },
+        "Properties": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Properties",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.Properties": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pageId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "bagId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "value": {
+          "type": "cds.LargeString"
+        },
+        "translatable": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.ChipBags": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "chipId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "ChipProperties": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.ChipProperties",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.ChipProperties": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "chipId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "bagId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "value": {
+          "type": "cds.LargeString"
+        },
+        "translatable": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.ChipInstanceBags": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pageId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "instanceId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "scope": {
+          "type": "cds.LargeString"
+        },
+        "ChipInstanceProperties": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.ChipInstanceProperties",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.ChipInstanceProperties": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pageId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "instanceId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "bagId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "value": {
+          "type": "cds.LargeString"
+        },
+        "translatable": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZPAGE_BUILDER_CONF.PageSets": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "configuration": {
+          "type": "cds.LargeString"
+        },
+        "Pages": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Pages",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "MyPages": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Pages",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "AssignedPages": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Pages",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "DefaultPage": {
+          "type": "cds.Association",
+          "target": "ZPAGE_BUILDER_CONF.Pages"
+        }
+      }
+    }
+  }
+}
